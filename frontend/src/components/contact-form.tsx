@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/hooks/use-toast"
+import { toast } from "sonner"
 import { CheckCircle2 } from "lucide-react"
 
 const formSchema = z.object({
@@ -44,8 +44,7 @@ export function ContactForm() {
     setIsSubmitting(false)
     setIsSubmitted(true)
 
-    toast({
-      title: "Estimate Request Received",
+    toast.success("Estimate Request Received", {
       description: "Thank you! We'll contact you shortly with your free estimate.",
     })
   }
