@@ -1,0 +1,16 @@
+{
+  "fullNameLabel": "Full Name",
+  "fullNamePlaceholder": "John Smith",
+  "emailLabel": "Email",
+  "emailPlaceholder": "john@example.com",
+  "phoneLabel": "Phone Number",
+  "phonePlaceholder": "(555) 123-4567",
+  "detailsLabel": "Project Details",
+  "detailsPlaceholder": "Please describe your project for a free estimate...",
+  "detailsDescription": "The more details you provide, the more accurate your estimate will be.",
+  "submitButton": "Get Free Estimate",
+  "submittingButton": "Submitting...",
+  "agreementText": "By submitting this form, you agree to be contacted regarding your request for an estimate.",
+  "successTitle": "Estimate Request Received",
+  "successDescription": "Thank you! We'll contact you shortly with your free estimate."
+}

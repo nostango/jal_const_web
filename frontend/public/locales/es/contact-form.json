@@ -1,0 +1,16 @@
+{
+  "fullNameLabel": "Nombre Completo",
+  "fullNamePlaceholder": "Juan Pérez",
+  "emailLabel": "Correo Electrónico",
+  "emailPlaceholder": "juan@ejemplo.com",
+  "phoneLabel": "Número de Teléfono",
+  "phonePlaceholder": "(555) 123-4567",
+  "detailsLabel": "Detalles del Proyecto",
+  "detailsPlaceholder": "Por favor describa su proyecto para una cotización gratis...",
+  "detailsDescription": "Mientras más detalles proporcione, más precisa será su cotización.",
+  "submitButton": "Obtener Cotización Gratis",
+  "submittingButton": "Enviando...",
+  "agreementText": "Al enviar este formulario, usted acepta ser contactado con respecto a su solicitud de cotización.",
+  "successTitle": "Solicitud de Cotización Recibida",
+  "successDescription": "¡Gracias! Nos pondremos en contacto con usted en breve con su cotización gratuita."
+}
