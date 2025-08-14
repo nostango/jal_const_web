@@ -45,27 +45,6 @@ const photos = [
     width: 800,
     height: 400,
   },
-  {
-    id: 6,
-    src: "/gallery/horizontal-scroll/image-6.jpg",
-    alt: "Description of image 6",
-    width: 450,
-    height: 400,
-  },
-  {
-    id: 7,
-    src: "/gallery/horizontal-scroll/image-7.jpg",
-    alt: "Description of image 7",
-    width: 900,
-    height: 400,
-  },
-  {
-    id: 8,
-    src: "/gallery/horizontal-scroll/image-8.jpg",
-    alt: "Description of image 8",
-    width: 600,
-    height: 400,
-  },
 ]
 
 export default function HorizontalGallery({ height = 400 }: HorizontalGalleryProps) {

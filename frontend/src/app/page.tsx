@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ContactForm } from "@/components/contact-form";
 import Header from "@/components/header";
 import ZoomSplash from "@/components/ZoomSplash";
+import TrustBadges from "@/components/TrustBadges";
 import '../i18n';
 
 import HorizontalGallery from "@/components/horizontal-gallery";
@@ -37,6 +38,7 @@ export default function Home() {
     <main>
       <Header />
       <Services />
+      <TrustBadges />
       <HorizontalGallery />
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
