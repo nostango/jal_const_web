@@ -1,6 +1,11 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ExternalLink, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import '../../i18n';
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -8,17 +13,17 @@ import { Card, CardContent } from "@/components/ui/card"
 const reviewSites = [
   {
     name: "Yelp",
-    logo: "/gallery/yelp.svg",
+    logo: "/gallery/review-images/yelp.svg",
     rating: 4.8,
     reviewCount: 127,
-    url: "https://yelp.com/biz/your-construction-company",
+    url: "https://www.yelp.com/biz/jal-construction-bridgeport-2",
     description: "See what our customers say about our construction services",
     bgColor: "bg-red-50",
     accentColor: "text-red-600",
   },
   {
     name: "Google Reviews",
-    logo: "/gallery/google.svg",
+    logo: "/gallery/review-images/google.svg",
     rating: 4.9,
     reviewCount: 89,
     url: "https://www.google.com/search?sca_esv=55a910f019e63594&sxsrf=AE3TifOQRx_Q42i0csrLclwB4cnOoIm-2A:1755120208527&q=JAL+Construction+Reviews&sa=X&ved=2ahUKEwjX3sSk3IiPAxUBFVkFHdWsHkMQ0bkNegQIHhAC&biw=1258&bih=876&dpr=2",
@@ -28,10 +33,10 @@ const reviewSites = [
   },
   {
     name: "Angi",
-    logo: "/gallery/angi.svg",
+    logo: "/gallery/review-images/angi.svg",
     rating: 4.7,
     reviewCount: 156,
-    url: "https://angi.com/companydetails/your-construction-company",
+    url: "https://www.angi.com/companylist/us/ct/bridgeport/j-a-l-construction-reviews-1.htm",
     description: "Trusted by homeowners for quality construction work",
     bgColor: "bg-orange-50",
     accentColor: "text-orange-600",
@@ -50,6 +55,18 @@ const reviewSites = [
 ]
 
 export default function ReviewWidgets() {
+  const { t, i18n } = useTranslation('trust-badges');
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Effect for mounting the component
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return <div className="flex flex-wrap justify-center gap-6 p-6" />;
+  }
+
   return (
     <div className="flex flex-wrap justify-center gap-6 p-6">
       {reviewSites.map((site) => (
@@ -90,12 +107,20 @@ export default function ReviewWidgets() {
 
             {/* {site.reviewCount && <p className="text-sm text-gray-600 mb-3">{site.reviewCount} reviews</p>} */}
 
-            <p className="text-sm text-gray-700 mb-4 leading-relaxed">{site.description}</p>
+            <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+              {site.name === 'Yelp' ? t('yelp_description') : 
+               site.name === 'Google Reviews' ? t('google_description') : 
+               site.name === 'Angi' ? t('angi_description') : 
+               site.description}
+            </p>
 
             <Button asChild variant="outline" size="sm" className="w-full bg-transparent">
               <Link href={site.url} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-4 h-4 mr-2" />
-                Visit {site.name}
+                {site.name === 'Google Reviews' ? t('google_text') : 
+                 site.name === 'Yelp' ? t('yelp_text') : 
+                 site.name === 'Angi' ? t('angi_text') :
+                 `Visit ${site.name}`}
               </Link>
             </Button>
           </CardContent>

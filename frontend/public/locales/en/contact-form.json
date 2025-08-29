@@ -12,5 +12,6 @@
   "submittingButton": "Submitting...",
   "agreementText": "By submitting this form, you agree to be contacted regarding your request for an estimate.",
   "successTitle": "Estimate Request Received",
-  "successDescription": "Thank you! We'll contact you shortly with your free estimate."
+  "successDescription": "Thank you! We'll contact you shortly with your free estimate.",
+  "submitAnotherButton": "Submit another request?"
 }

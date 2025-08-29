@@ -37,18 +37,45 @@ export function ContactForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    const formData = {
+      ...values,
+      // IMPORTANT: Replace this with your actual Web3Forms Access Key
+      access_key: "3e6cf92b-79fb-4675-bcb7-677fcb6ab6ba",
+      subject: "NUEVA Cotización de JAL Construction",
+      replyto: values.email,
+    };
 
-    // Here you would typically send the form data to your backend
-    console.log(values)
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+      const result = await response.json();
 
-    toast.success(t('successTitle'), {
-      description: t('successDescription'),
-    })
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success(t('successTitle'), {
+          description: t('successDescription'),
+        });
+      } else {
+        console.error("Error submitting form:", result);
+        toast.error("Submission Error", {
+          description: result.message || "There was an error submitting your form. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      toast.error("Network Error", {
+        description: "There was a network error. Please check your connection and try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (isSubmitted) {
@@ -60,7 +87,10 @@ export function ContactForm() {
           <p className="text-muted-foreground">
             {t('successDescription')}
           </p>
-          <Button onClick={() => setIsSubmitted(false)} variant="outline" className="mt-4">
+          <Button onClick={() => {
+            form.reset();
+            setIsSubmitted(false);
+          }} variant="outline" className="mt-4">
             {t('submitAnotherButton')}
           </Button>
         </div>

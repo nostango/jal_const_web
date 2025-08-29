@@ -12,5 +12,6 @@
   "submittingButton": "Enviando...",
   "agreementText": "Al enviar este formulario, usted acepta ser contactado con respecto a su solicitud de cotización.",
   "successTitle": "Solicitud de Cotización Recibida",
-  "successDescription": "¡Gracias! Nos pondremos en contacto con usted en breve con su cotización gratuita."
+  "successDescription": "¡Gracias! Nos pondremos en contacto con usted en breve con su cotización gratuita.",
+  "submitAnotherButton": "Llenar otra enquesta?"
 }
