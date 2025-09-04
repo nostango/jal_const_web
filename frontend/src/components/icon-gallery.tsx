@@ -119,6 +119,7 @@ const galleries = [
 ]
 
 export default function IconGallery({ columns = 3 }: IconGalleryProps) {
+  console.log("--- Rendering IconGallery component ---");
   const [selectedGallery, setSelectedGallery] = useState<(typeof galleries)[0] | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 

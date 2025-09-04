@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import '../i18n';
 
 export default function Services() {
+  console.log("--- Rendering ExpertiseCard component ---");
   const { t } = useTranslation('header');
 
   return (

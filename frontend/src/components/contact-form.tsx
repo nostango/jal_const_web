@@ -20,6 +20,7 @@ const formSchema = z.object({
 })
 
 export function ContactForm() {
+  // console.log("--- Rendering ContactForm component ---");
   const { t } = useTranslation('contact-form');
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)

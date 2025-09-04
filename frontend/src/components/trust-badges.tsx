@@ -2,6 +2,7 @@ import ReviewWidgets from "./ui/review-widgets"
 import { useTranslation } from "react-i18next"
 
 export default function TrustBadges() {
+  console.log("--- Rendering TrustBadges component ---");
   const { t } = useTranslation('trust-badges')
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">

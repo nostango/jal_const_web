@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import Navbar from './navbar'; // Import Navbar
+import Navbar from './navbar';
 import '../i18n';
 
 // --- Configuration ---
 const heroImage = { src: '/gallery/hero-1.jpg', alt: 'Patio Image' };
 
 export default function Header() {
+  console.log("--- Rendering Header component ---");
   const { t } = useTranslation('header');
   const [isMounted, setIsMounted] = useState(false);
 
