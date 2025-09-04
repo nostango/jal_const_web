@@ -13,26 +13,9 @@ import IconGallery from "@/components/icon-gallery";
 export default function Home() {
   const { t } = useTranslation('common');
   const [isMounted, setIsMounted] = useState(false);
-  const [showNavbar, setShowNavbar] = useState(false);
-  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    
-    // Start navbar animation immediately
-    const navbarTimer = setTimeout(() => {
-      setShowNavbar(true);
-    }, 100);
-
-    // Start content animation after navbar
-    const contentTimer = setTimeout(() => {
-      setShowContent(true);
-    }, 700);
-
-    return () => {
-      clearTimeout(navbarTimer);
-      clearTimeout(contentTimer);
-    };
   }, []);
 
   if (!isMounted) {
@@ -41,7 +24,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className={`relative transition-all duration-1000 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div className={`relative transition-all duration-1000 ease-out opacity-100 translate-y-0`}>
         <div
           className="absolute inset-0 bg-cover bg-center filter grayscale -z-10"
           // style={{ backgroundImage: "url('/gallery/background/brick-wall.png')", backgroundSize: '300px'  }}

@@ -10,17 +10,13 @@ import '../i18n';
 const heroImage = { src: '/gallery/hero-1.jpg', alt: 'Patio Image' };
 
 export default function Header() {
-  const { t, i18n } = useTranslation('header');
+  const { t } = useTranslation('header');
   const [isMounted, setIsMounted] = useState(false);
 
   // Effect for mounting the component
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
 
   if (!isMounted) {
     return <div className="min-h-[900px]" />;

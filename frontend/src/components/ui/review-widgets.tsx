@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ExternalLink, Star } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import '../../i18n';
@@ -55,7 +55,7 @@ const reviewSites = [
 ]
 
 export default function ReviewWidgets() {
-  const { t, i18n } = useTranslation('trust-badges');
+  const { t } = useTranslation('trust-badges');
   const [isMounted, setIsMounted] = useState(false);
 
   // Effect for mounting the component

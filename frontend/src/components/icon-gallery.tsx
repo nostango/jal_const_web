@@ -3,7 +3,6 @@
 import type React from "react"
 import Image from "next/image"
 import { useState } from "react"
-import { useTranslation } from "react-i18next"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface IconGalleryProps {
@@ -122,7 +121,6 @@ const galleries = [
 export default function IconGallery({ columns = 3 }: IconGalleryProps) {
   const [selectedGallery, setSelectedGallery] = useState<(typeof galleries)[0] | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const { t } = useTranslation('icon-gallery')
 
   const openGallery = (gallery: (typeof galleries)[0]) => {
     setSelectedGallery(gallery)
