@@ -181,80 +181,89 @@ export default function IconGallery({ columns = 3 }: IconGalleryProps) {
         ))}
       </div>
 
+      {/* This is where the popup is, I would like to perfect the logic for the positioning of the popup and everything */}
       {selectedGallery && (
         <div
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
+          className="fixed inset-0 bg-black/95 z-50 flex items-end justify-center p-4 py-160"
           onKeyDown={handleKeyDown}
           tabIndex={0}
+          onClick={closeGallery}
         >
-          {/* Close button */}
-          <button
-            onClick={closeGallery}
-            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          <div
+            className="relative bg-white/10 rounded-lg shadow-2xl w-full max-w-4xl h-full max-h-[90vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
           >
-            <X className="w-6 h-6 text-white" />
-          </button>
+            {/* Close button */}
+            <button
+              onClick={closeGallery}
+              className="absolute top-2 right-2 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
 
-          {/* Gallery title */}
-          <div className="absolute top-4 left-4 z-10">
-            <h2 className="text-white text-2xl font-bold">{selectedGallery.name}</h2>
-            <p className="text-white/70">
-              {currentImageIndex + 1} of {selectedGallery.images.length}
-            </p>
-          </div>
-
-          {/* Navigation buttons */}
-          {selectedGallery.images.length > 1 && (
-            <>
-              <button
-                onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <ChevronLeft className="w-8 h-8 text-white" />
-              </button>
-              <button
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <ChevronRight className="w-8 h-8 text-white" />
-              </button>
-            </>
-          )}
-
-          {/* Main image */}
-          <div className="relative w-full h-full flex items-center justify-center p-16">
-            <Image
-              src={selectedGallery.images[currentImageIndex].src || "/placeholder.svg"}
-              alt={selectedGallery.images[currentImageIndex].alt}
-              fill
-              className="object-contain"
-              sizes="100vw"
-              priority
-            />
-          </div>
-
-          {/* Image thumbnails */}
-          {selectedGallery.images.length > 1 && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/50 p-2 rounded-lg">
-              {selectedGallery.images.map((image, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`relative w-16 h-16 rounded overflow-hidden transition-all ${
-                    index === currentImageIndex ? "ring-2 ring-white scale-110" : "opacity-70 hover:opacity-100"
-                  }`}
-                >
-                  <Image
-                    src={image.src || "/placeholder.svg"}
-                    alt={image.alt}
-                    fill
-                    className="object-cover"
-                    sizes="64px"
-                  />
-                </button>
-              ))}
+            {/* Gallery title */}
+            <div className="absolute top-4 left-4 z-20">
+              <h2 className="text-white text-2xl font-bold">{selectedGallery.name}</h2>
+              <p className="text-white/70">
+                {currentImageIndex + 1} of {selectedGallery.images.length}
+              </p>
             </div>
-          )}
+
+            {/* Navigation buttons */}
+            {selectedGallery.images.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                >
+                  <ChevronLeft className="w-8 h-8 text-white" />
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                >
+                  <ChevronRight className="w-8 h-8 text-white" />
+                </button>
+              </>
+            )}
+
+            {/* Main image */}
+            <div className="relative flex-1 w-full h-full">
+              <Image
+                src={selectedGallery.images[currentImageIndex].src || "/placeholder.svg"}
+                alt={selectedGallery.images[currentImageIndex].alt}
+                fill
+                className="object-contain p-12"
+                sizes="(max-width: 1024px) 90vw, 80vw"
+                priority
+              />
+            </div>
+
+            {/* Image thumbnails */}
+            {selectedGallery.images.length > 1 && (
+              <div className="flex-shrink-0 p-4 bg-black/50">
+                <div className="flex justify-center gap-2">
+                  {selectedGallery.images.map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`relative w-16 h-16 rounded overflow-hidden transition-all ${
+                        index === currentImageIndex ? "ring-2 ring-white scale-110" : "opacity-70 hover:opacity-100"
+                      }`}
+                    >
+                      <Image
+                        src={image.src || "/placeholder.svg"}
+                        alt={image.alt}
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </>
