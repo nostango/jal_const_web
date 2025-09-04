@@ -8,9 +8,7 @@ import TrustBadges from "@/components/trust-badges";
 import ExpertiseCard from "@/components/expertise-card";
 import '../i18n';
 
-import HorizontalGallery from "@/components/horizontal-gallery";
-
-import Services from "@/components/expertise-card";
+import IconGallery from "@/components/icon-gallery";
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -43,11 +41,16 @@ export default function Home() {
 
   return (
     <main>
-      <div className={`transition-all duration-1000 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div className={`relative transition-all duration-1000 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div
+          className="absolute inset-0 bg-cover bg-center filter grayscale -z-10"
+          // style={{ backgroundImage: "url('/gallery/background/brick-wall.png')", backgroundSize: '300px'  }}
+        />
+        <div className="absolute inset-0 bg-white/50 -z-10" />
         <Header />
         <ExpertiseCard />
         <TrustBadges />
-        <HorizontalGallery />
+        <IconGallery />
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-3xl font-bold mb-2">{t('title')}</h1>

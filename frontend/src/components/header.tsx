@@ -23,11 +23,11 @@ export default function Header() {
   };
 
   if (!isMounted) {
-    return <div className="min-h-[875px]" />;
+    return <div className="min-h-[900px]" />;
   }
 
   return (
-    <header className="relative flex flex-col items-center justify-between shadow-2xl min-h-[875px] overflow-hidden text-white p-6">
+    <header className="relative flex flex-col items-center justify-between min-h-[875px] overflow-hidden text-white py-8 px-10">
       <Navbar />
       {/* --- Background --- */}
       <div className="absolute inset-0 -z-10">
@@ -39,12 +39,13 @@ export default function Header() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
+        <div className="absolute bottom-0 h-10 w-full bg-gradient-to-t from-white to-transparent" />
       </div>
 
       {/* --- Content --- */}
       <div className="z-10 flex flex-col items-start justify-end h-full w-full">
         {/* Main Text with transparent dark background */}
-        <div className="max-w-2xl text-left bg-gray-900/70 p-6">
+        <div className="max-w-2xl text-left bg-gray-800/60 p-6">
           <h2 className="text-xl md:text-2xl font-bold leading-tight">
             {t('mainHeading')}
           </h2>
