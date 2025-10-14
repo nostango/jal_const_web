@@ -2,7 +2,7 @@
 
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import '../i18n';
+
 
 export default function Navbar() {
   const { t, i18n } = useTranslation('header');

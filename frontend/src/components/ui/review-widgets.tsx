@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import '../../i18n';
+
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -56,16 +55,6 @@ const reviewSites = [
 
 export default function ReviewWidgets() {
   const { t } = useTranslation('trust-badges');
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Effect for mounting the component
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return <div className="flex flex-wrap justify-center gap-6 p-6" />;
-  }
 
   return (
     <div className="flex flex-wrap justify-center gap-6 p-6">

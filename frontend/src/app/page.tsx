@@ -5,12 +5,11 @@ import { ContactForm } from "@/components/contact-form";
 import Header from "@/components/header";
 import TrustBadges from "@/components/trust-badges";
 import ExpertiseCard from "@/components/expertise-card";
-import '../i18n';
+
 
 import IconGallery from "@/components/icon-gallery";
 
 export default function Home() {
-  // console.log("--- Rendering Home page ---");
   const { t } = useTranslation('common');
 
   return (
@@ -18,7 +17,6 @@ export default function Home() {
       <div className="relative">
         <div
           className="absolute inset-0 bg-cover bg-center filter grayscale -z-10"
-          // style={{ backgroundImage: "url('/gallery/background/brick-wall.png')", backgroundSize: '300px'  }}
         />
         <div className="absolute inset-0 bg-white/50 -z-10" />
         <Header />

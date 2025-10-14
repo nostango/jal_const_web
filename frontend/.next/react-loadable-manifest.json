@@ -1,8 +1,1 @@
-{
-  "../node_modules/i18next-http-backend/esm/request.js -> cross-fetch": {
-    "id": 2749,
-    "files": [
-      "static/chunks/749.248195fccb698aaf.js"
-    ]
-  }
-}
+{}

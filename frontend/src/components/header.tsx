@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import Navbar from './navbar';
-import '../i18n';
+
 
 // --- Configuration ---
 const heroImage = { src: '/gallery/hero-1.jpg', alt: 'Patio Image' };
@@ -12,16 +11,6 @@ const heroImage = { src: '/gallery/hero-1.jpg', alt: 'Patio Image' };
 export default function Header() {
   console.log("--- Rendering Header component ---");
   const { t } = useTranslation('header');
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Effect for mounting the component
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return <div className="min-h-[900px]" />;
-  }
 
   return (
     <header className="relative flex flex-col items-center justify-between min-h-[875px] overflow-hidden text-white py-8 px-10">
